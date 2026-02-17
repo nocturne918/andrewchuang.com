@@ -32,13 +32,12 @@ export function Background() {
 
     const initCanvas = () => {
       const dpr = window.devicePixelRatio || 1;
-      // @ts-expect-error vendor
       const bsr =
-        ctx.webkitBackingStorePixelRatio ||
-        ctx.mozBackingStorePixelRatio ||
-        ctx.msBackingStorePixelRatio ||
-        ctx.oBackingStorePixelRatio ||
-        ctx.backingStorePixelRatio ||
+        (ctx as any).webkitBackingStorePixelRatio ||
+        (ctx as any).mozBackingStorePixelRatio ||
+        (ctx as any).msBackingStorePixelRatio ||
+        (ctx as any).oBackingStorePixelRatio ||
+        (ctx as any).backingStorePixelRatio ||
         1;
       const dpi = dpr / bsr;
 
