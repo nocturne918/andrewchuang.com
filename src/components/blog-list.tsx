@@ -3,7 +3,9 @@ import { getBlogs } from "@/lib/blog";
 
 export function BlogList() {
   const blogs = getBlogs().sort((a, b) => {
-    return new Date(b.metadata.date).getTime() - new Date(a.metadata.date).getTime();
+    return (
+      new Date(b.metadata.date).getTime() - new Date(a.metadata.date).getTime()
+    );
   });
 
   return (

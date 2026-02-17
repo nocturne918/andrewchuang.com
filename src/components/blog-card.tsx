@@ -1,8 +1,8 @@
 import { Blog } from "@/lib/blog";
 
 type BlogCardProps = {
-  post: Blog
-}
+  post: Blog;
+};
 
 export function BlogCard({ post }: BlogCardProps) {
   return (
@@ -10,5 +10,5 @@ export function BlogCard({ post }: BlogCardProps) {
       <div>{post.metadata.title}</div>
       <div>{post.metadata.description}</div>
     </div>
-  )
+  );
 }

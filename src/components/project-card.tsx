@@ -11,7 +11,12 @@ interface ProjectCardProps {
   icon: string;
 }
 
-export function ProjectCard({ title, description, slug, icon }: ProjectCardProps) {
+export function ProjectCard({
+  title,
+  description,
+  slug,
+  icon,
+}: ProjectCardProps) {
   return (
     <Link
       href={`/projects/${slug}`}
@@ -22,18 +27,24 @@ export function ProjectCard({ title, description, slug, icon }: ProjectCardProps
           {icon.startsWith("/") || icon.startsWith("http") ? (
             <img src={icon} alt={title} className="w-8 h-8 object-contain" />
           ) : (
-            <Icon icon={icon} className="w-8 h-8 text-neutral-900 dark:text-neutral-100" />
+            <Icon
+              icon={icon}
+              className="w-8 h-8 text-neutral-900 dark:text-neutral-100"
+            />
           )}
         </div>
-        <Icon icon="lucide:arrow-up-right" className="w-5 h-5 text-neutral-400 group-hover:text-neutral-900 dark:group-hover:text-neutral-100 transition-colors" />
+        <Icon
+          icon="lucide:arrow-up-right"
+          className="w-5 h-5 text-neutral-400 group-hover:text-neutral-900 dark:group-hover:text-neutral-100 transition-colors"
+        />
       </div>
-      
+
       <h3 className="font-bold text-lg mb-2 group-hover:text-neutral-900 dark:group-hover:text-neutral-100 transition-colors">
         {title}
       </h3>
-      
+
       <div className="h-px bg-neutral-200 dark:bg-neutral-800 my-4" />
-      
+
       <p className="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">
         {description}
       </p>

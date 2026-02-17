@@ -30,11 +30,16 @@ export function Background() {
     let steps: Fn[] = [];
     let prevSteps: Fn[] = [];
 
-
     const initCanvas = () => {
       const dpr = window.devicePixelRatio || 1;
       // @ts-expect-error vendor
-      const bsr = ctx.webkitBackingStorePixelRatio || ctx.mozBackingStorePixelRatio || ctx.msBackingStorePixelRatio || ctx.oBackingStorePixelRatio || ctx.backingStorePixelRatio || 1;
+      const bsr =
+        ctx.webkitBackingStorePixelRatio ||
+        ctx.mozBackingStorePixelRatio ||
+        ctx.msBackingStorePixelRatio ||
+        ctx.oBackingStorePixelRatio ||
+        ctx.backingStorePixelRatio ||
+        1;
       const dpi = dpr / bsr;
 
       canvas.style.width = `${width}px`;
@@ -50,7 +55,12 @@ export function Background() {
       return [x + dx, y + dy];
     };
 
-    const step = (x: number, y: number, rad: number, counter: { value: number } = { value: 0 }) => {
+    const step = (
+      x: number,
+      y: number,
+      rad: number,
+      counter: { value: number } = { value: 0 },
+    ) => {
       const length = Math.random() * len;
       counter.value += 1;
 
@@ -65,7 +75,8 @@ export function Background() {
       const rad2 = rad - Math.random() * r15;
 
       // out of bounds
-      if (nx < -100 || nx > width + 100 || ny < -100 || ny > height + 100) return;
+      if (nx < -100 || nx > width + 100 || ny < -100 || ny > height + 100)
+        return;
 
       const rate = counter.value <= MIN_BRANCH ? 0.8 : 0.5;
 
@@ -109,7 +120,7 @@ export function Background() {
 
     const start = () => {
       if (animationFrameId) cancelAnimationFrame(animationFrameId);
-      
+
       ctx.clearRect(0, 0, width, height);
       ctx.lineWidth = 1;
       ctx.strokeStyle = color;
@@ -120,9 +131,9 @@ export function Background() {
         () => step(-5, randomMiddle() * height, 0),
         () => step(width + 5, randomMiddle() * height, r180),
       ];
-      
+
       if (width < 500) steps = steps.slice(0, 2);
-      
+
       stopped = false;
       frame();
     };

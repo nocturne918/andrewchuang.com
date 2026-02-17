@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import { Navbar } from "@/components/navbar";
 import { Background } from "@/components/background";
@@ -31,9 +32,12 @@ export default function RootLayout({
       >
         <Background />
         <Navbar />
-        <main className="max-w-2xl mx-auto py-40">
-          {children}
-        </main>
+        <main className="max-w-2xl mx-auto py-40">{children}</main>
+        <Script
+          data-goatcounter="https://nocturne918.goatcounter.com/count"
+          src="https://gc.zgo.at/count.js"
+          strategy="afterInteractive"
+        />
       </body>
     </html>
   );
